@@ -2,76 +2,58 @@ import QRGenerator from '@/components/QRGenerator';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
+      <header className="bg-white shadow-sm">
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-2">
             Free QR Code Generator
           </h1>
-          <p className="text-gray-600 text-center mt-2 text-lg">
+          <p className="text-gray-600 text-center text-lg">
             Create QR codes instantly for URLs, text, emails, and more
           </p>
         </div>
       </header>
 
-      {/* Ad Space - Top Banner */}
-      <div className="bg-gray-100 border-b">
-        <div className="max-w-6xl mx-auto px-4 py-2">
-          <div className="h-16 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-sm">
-            Advertisement Space - 728x90
-          </div>
-        </div>
-      </div>
-
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* QR Generator - Main Content */}
-          <div className="lg:col-span-3">
-            <QRGenerator />
-          </div>
-
-          {/* Sidebar with Ad Space */}
-          <aside className="space-y-6">
-            {/* Ad Space - Sidebar */}
-            <div className="bg-white rounded-lg shadow-lg p-4">
-              <div className="h-96 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-sm">
-                Advertisement Space - 300x250
-              </div>
-            </div>
-
-            {/* Features */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Features</h2>
-              <ul className="space-y-3 text-sm text-gray-600">
-                <li className="flex items-center">
-                  <span className="text-green-500 mr-2">✓</span>
-                  100% Free to use
-                </li>
-                <li className="flex items-center">
-                  <span className="text-green-500 mr-2">✓</span>
-                  No registration required
-                </li>
-                <li className="flex items-center">
-                  <span className="text-green-500 mr-2">✓</span>
-                  High quality PNG download
-                </li>
-                <li className="flex items-center">
-                  <span className="text-green-500 mr-2">✓</span>
-                  Mobile responsive design
-                </li>
-                <li className="flex items-center">
-                  <span className="text-green-500 mr-2">✓</span>
-                  Supports URLs, text, emails
-                </li>
-              </ul>
-            </div>
-          </aside>
+      <main className="max-w-4xl mx-auto px-4 py-8">
+        {/* QR Generator */}
+        <div className="mb-12">
+          <QRGenerator />
         </div>
+
+        {/* Features Section */}
+        <section className="bg-white rounded-xl shadow-sm p-8 mb-8">
+          <h2 className="text-2xl font-semibold text-gray-900 text-center mb-8">
+            Why Choose Our QR Generator?
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <span className="text-blue-600 text-xl">⚡</span>
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Instant Generation</h3>
+              <p className="text-gray-600 text-sm">Create QR codes instantly with just one click</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <span className="text-green-600 text-xl">✓</span>
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">100% Free</h3>
+              <p className="text-gray-600 text-sm">No registration, no limits, completely free</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <span className="text-purple-600 text-xl">📱</span>
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Mobile Friendly</h3>
+              <p className="text-gray-600 text-sm">Works perfectly on all devices</p>
+            </div>
+          </div>
+        </section>
 
         {/* SEO Content Section */}
-        <section className="mt-12 bg-white rounded-lg shadow-lg p-8">
+        <section className="bg-white rounded-xl shadow-sm p-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">
             About QR Code Generator
           </h2>
@@ -88,14 +70,14 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-800 mb-3">How to Use This Generator</h3>
-              <ol className="list-decimal list-inside space-y-2">
+              <ol className="list-decimal list-inside space-y-2 mb-4">
                 <li>Enter your text, URL, or any data in the input field</li>
                 <li>Click the &quot;Generate QR Code&quot; button</li>
                 <li>Your QR code will appear instantly</li>
                 <li>Download the QR code as a PNG image</li>
                 <li>Use it anywhere you need!</li>
               </ol>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3 mt-4">Common Use Cases</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Common Use Cases</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Website URLs and landing pages</li>
                 <li>Wi-Fi passwords and network information</li>
@@ -106,19 +88,12 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Bottom Ad Space */}
-        <div className="mt-8 bg-white rounded-lg shadow-lg p-4">
-          <div className="h-24 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-sm">
-            Advertisement Space - Bottom Banner 728x90
-          </div>
-        </div>
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8 mt-12">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <p className="text-gray-400">
+      <footer className="bg-white border-t mt-16">
+        <div className="max-w-4xl mx-auto px-4 py-6">
+          <p className="text-gray-500 text-center text-sm">
             © 2024 QR Code Generator. Free online QR code generator tool.
           </p>
         </div>

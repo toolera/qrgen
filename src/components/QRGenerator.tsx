@@ -64,28 +64,28 @@ export default function QRGenerator() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 md:p-8">
+    <div className="w-full bg-white rounded-xl shadow-sm border p-6 md:p-8">
       <div className="space-y-6">
         {/* Input Section */}
         <div className="space-y-4">
-          <label htmlFor="text-input" className="block text-lg font-semibold text-gray-700">
-            Enter text or URL to generate QR code
-          </label>
           <div className="relative">
             <textarea
               id="text-input"
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="Enter your text, URL, email, phone number, or any data..."
-              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors resize-none h-24 text-gray-700"
+              className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none h-28 text-gray-700 placeholder-gray-400"
               maxLength={1000}
             />
-            <div className="absolute bottom-2 right-2 text-xs text-gray-400">
+            <div className="absolute bottom-3 right-3 text-xs text-gray-400 bg-white px-1">
               {text.length}/1000
             </div>
           </div>
           {error && (
-            <div className="text-red-500 text-sm font-medium">{error}</div>
+            <div className="flex items-center gap-2 text-red-600 text-sm">
+              <span className="text-red-500">⚠</span>
+              {error}
+            </div>
           )}
         </div>
 
@@ -94,47 +94,60 @@ export default function QRGenerator() {
           <button
             onClick={generateQR}
             disabled={isLoading || !text.trim()}
-            className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-xl font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 disabled:hover:scale-100"
           >
-            {isLoading ? 'Generating...' : 'Generate QR Code'}
+            {isLoading ? (
+              <span className="flex items-center justify-center gap-2">
+                <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                Generating...
+              </span>
+            ) : (
+              'Generate QR Code'
+            )}
           </button>
-          <button
-            onClick={clearAll}
-            className="flex-1 sm:flex-initial bg-gray-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-600 transition-colors"
-          >
-            Clear All
-          </button>
-        </div>
-
-        {/* QR Code Display */}
-        <div className="space-y-4">
-          <canvas
-            ref={canvasRef}
-            className={`mx-auto border-2 border-gray-200 rounded-lg ${qrCode ? 'block' : 'hidden'}`}
-          />
-          
-          {qrCode && (
-            <div className="text-center">
-              <button
-                onClick={downloadQR}
-                className="bg-green-600 text-white py-2 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors"
-              >
-                Download QR Code
-              </button>
-            </div>
+          {(qrCode || text) && (
+            <button
+              onClick={clearAll}
+              className="sm:w-auto bg-gray-100 text-gray-700 py-3 px-6 rounded-xl font-medium hover:bg-gray-200 transition-colors"
+            >
+              Clear
+            </button>
           )}
         </div>
 
-        {/* Instructions */}
-        <div className="bg-gray-50 rounded-lg p-4 text-sm text-gray-600">
-          <h3 className="font-semibold mb-2">How to use:</h3>
-          <ul className="space-y-1">
-            <li>• Enter any text, URL, email, or phone number</li>
-            <li>• Click &ldquo;Generate QR Code&rdquo; to create your QR code</li>
-            <li>• Download the QR code as a PNG image</li>
-            <li>• Scan with any QR code reader or smartphone camera</li>
-          </ul>
-        </div>
+        {/* QR Code Display */}
+        {qrCode && (
+          <div className="space-y-4">
+            <div className="bg-gray-50 rounded-xl p-6 text-center">
+              <canvas
+                ref={canvasRef}
+                className="mx-auto rounded-lg shadow-sm"
+              />
+            </div>
+            
+            <div className="text-center">
+              <button
+                onClick={downloadQR}
+                className="inline-flex items-center gap-2 bg-green-600 text-white py-3 px-6 rounded-xl font-medium hover:bg-green-700 transition-all duration-200 transform hover:scale-105"
+              >
+                <span>📥</span>
+                Download PNG
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Quick Tips */}
+        {!qrCode && (
+          <div className="bg-blue-50 rounded-xl p-4 border border-blue-100">
+            <h3 className="font-medium text-blue-900 mb-2">💡 Quick Tips:</h3>
+            <ul className="text-sm text-blue-800 space-y-1">
+              <li>• Paste any URL to create a clickable QR code</li>
+              <li>• Add contact info like email@example.com</li>
+              <li>• Perfect for sharing WiFi passwords or social links</li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
