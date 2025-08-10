@@ -1,102 +1,127 @@
-import Image from "next/image";
+import QRGenerator from '@/components/QRGenerator';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="max-w-6xl mx-auto px-4 py-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
+            Free QR Code Generator
+          </h1>
+          <p className="text-gray-600 text-center mt-2 text-lg">
+            Create QR codes instantly for URLs, text, emails, and more
+          </p>
+        </div>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Ad Space - Top Banner */}
+      <div className="bg-gray-100 border-b">
+        <div className="max-w-6xl mx-auto px-4 py-2">
+          <div className="h-16 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-sm">
+            Advertisement Space - 728x90
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <main className="max-w-6xl mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* QR Generator - Main Content */}
+          <div className="lg:col-span-3">
+            <QRGenerator />
+          </div>
+
+          {/* Sidebar with Ad Space */}
+          <aside className="space-y-6">
+            {/* Ad Space - Sidebar */}
+            <div className="bg-white rounded-lg shadow-lg p-4">
+              <div className="h-96 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-sm">
+                Advertisement Space - 300x250
+              </div>
+            </div>
+
+            {/* Features */}
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Features</h2>
+              <ul className="space-y-3 text-sm text-gray-600">
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  100% Free to use
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  No registration required
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  High quality PNG download
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Mobile responsive design
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-500 mr-2">✓</span>
+                  Supports URLs, text, emails
+                </li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+
+        {/* SEO Content Section */}
+        <section className="mt-12 bg-white rounded-lg shadow-lg p-8">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+            About QR Code Generator
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-600">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">What is a QR Code?</h3>
+              <p className="mb-4">
+                A QR (Quick Response) code is a type of matrix barcode that can store various types of information such as URLs, text, contact information, and more. QR codes can be scanned using smartphones and dedicated QR code readers.
+              </p>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Why Use QR Codes?</h3>
+              <p>
+                QR codes provide a quick and convenient way to share information. They&apos;re perfect for business cards, marketing materials, event tickets, restaurant menus, and contactless sharing of any digital content.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">How to Use This Generator</h3>
+              <ol className="list-decimal list-inside space-y-2">
+                <li>Enter your text, URL, or any data in the input field</li>
+                <li>Click the &quot;Generate QR Code&quot; button</li>
+                <li>Your QR code will appear instantly</li>
+                <li>Download the QR code as a PNG image</li>
+                <li>Use it anywhere you need!</li>
+              </ol>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3 mt-4">Common Use Cases</h3>
+              <ul className="list-disc list-inside space-y-1">
+                <li>Website URLs and landing pages</li>
+                <li>Wi-Fi passwords and network information</li>
+                <li>Contact information (vCards)</li>
+                <li>Social media profiles</li>
+                <li>Event information and tickets</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Bottom Ad Space */}
+        <div className="mt-8 bg-white rounded-lg shadow-lg p-4">
+          <div className="h-24 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-sm">
+            Advertisement Space - Bottom Banner 728x90
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-8 mt-12">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <p className="text-gray-400">
+            © 2024 QR Code Generator. Free online QR code generator tool.
+          </p>
+        </div>
       </footer>
     </div>
   );
