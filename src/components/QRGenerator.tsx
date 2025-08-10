@@ -22,6 +22,13 @@ export default function QRGenerator() {
     try {
       const canvas = canvasRef.current;
       if (canvas) {
+        // Clear the canvas first
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Generate QR code
         await QRCode.toCanvas(canvas, text, {
           width: 300,
           margin: 2,
@@ -33,8 +40,11 @@ export default function QRGenerator() {
         
         const dataURL = canvas.toDataURL('image/png');
         setQrCode(dataURL);
+      } else {
+        setError('Canvas not available');
       }
-    } catch {
+    } catch (err) {
+      console.error('QR Generation Error:', err);
       setError('Failed to generate QR code');
     } finally {
       setIsLoading(false);
@@ -115,13 +125,23 @@ export default function QRGenerator() {
           )}
         </div>
 
+        {/* Canvas - Always present but hidden when no QR code */}
+        <canvas
+          ref={canvasRef}
+          width={300}
+          height={300}
+          className="hidden"
+        />
+
         {/* QR Code Display */}
         {qrCode && (
           <div className="space-y-4">
             <div className="bg-gray-50 rounded-xl p-6 text-center">
-              <canvas
-                ref={canvasRef}
-                className="mx-auto rounded-lg shadow-sm"
+              <img
+                src={qrCode}
+                alt="Generated QR Code"
+                className="mx-auto rounded-lg shadow-sm max-w-full h-auto"
+                style={{ maxWidth: '300px' }}
               />
             </div>
             
